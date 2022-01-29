@@ -19,8 +19,7 @@ func Detect(ctx context.Context, wg *sync.WaitGroup) {
 		}
 	}()
 	log.Println("Detector running ...")
-	// ticker := time.NewTicker(time.Millisecond * 250)
-	ticker := time.NewTicker(time.Second)
+	ticker := time.NewTicker(time.Millisecond * 250)
 	defer ticker.Stop()
 	for {
 		select {
