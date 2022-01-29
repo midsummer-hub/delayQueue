@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package delayQueue;
+
+option go_package = "./;queueRpc";
+
+//protoc  --go_out=./ delayQueue.proto
+//protoc --go-grpc_out=./ delayQueue.proto
+
+service DelayQueue {
+  rpc Ping (PingRequest) returns (PingResponse) {
+  }
+  rpc Push (PushRequest) returns (PushResponse) {
+  }
+  rpc Pop (PopRequest) returns (PopResponse) {
+  }
+  rpc Del (DelRequest) returns (DelResponse) {
+  }
+}
+
+// Ping
+message PingRequest {
+  string msg = 1;
+}
+
+message PingResponse {
+  string msg = 1;
+}
+
+// Push
+message PushRequest {
+  string data = 1;
+  string targetAddress = 2;
+  int64 expiryTime = 3;
+}
+
+message PushResponse {
+  string dataID = 1;
+}
+
+// Pop
+message PopRequest {
+  int64 expiryTime = 1;
+}
+
+message PopResponse {
+  string data = 1;
+}
+
+// Del
+message DelRequest {
+  string dataID = 1;
+}
+
+message DelResponse {
+}

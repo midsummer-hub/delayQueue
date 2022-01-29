@@ -1,0 +1,5 @@
+redis_config:
+  Address: "localhost:6379"
+  Password: "foobared"
+  MaxActive: 15
+  MaxIdle: 5
